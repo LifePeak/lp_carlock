@@ -24,12 +24,11 @@ end)
 
 
 -- Script Variables (dont change them)
-local IsLockingCar  = false
-
+local IsLockingCar   = false
 local MyVehicles     = {}
 local SharedVehicles = {}
 local NotMyVehicle   = {}
-
+local Animation 	 = "anim@mp_player_intmenu@key_fob@"
 local function ToggleCarLock(Car)
 	IsLockingCar = true
 
@@ -166,7 +165,6 @@ end
 
 Citizen.CreateThread(function()
 	-- Load Animation
-	local Animation = "anim@mp_player_intmenu@key_fob@"
 	RequestAnimDict(Animation)
 	while not HasAnimDictLoaded(Animation) do
 		Citizen.Wait(0)
