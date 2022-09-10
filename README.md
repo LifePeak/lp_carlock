@@ -12,7 +12,7 @@
   <h3 align="center">LifePeak - Skripts</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Any fool can write code that a computer can understand. Good programmers write code that humans can understand!
     <br />
     <a href="https://lifepeak-scripts.tebex.io"><strong>Explore us on Tebex  »»</strong></a>
     <br />
@@ -57,19 +57,19 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Explore Lifepeak
-### Whats Lifepeak-Skripts?
-Lifepeak is a smal developing team of three members. We are we are specialised in FiveM-Skripting, Hosting, Managing Servers.
+### What's Lifepeak-Scripts?
+Lifepeak is a small developing team of three members. We are specialized in Five-M Scripting, Hosting, Managing Servers.
 
 
 
 
 
 
-### What we Offer ?
+### What we offer ?
 
-This section list our Supported Programing Langues and Frameworks.
+This section list our Supported Programming Languages and Frameworks.
 
-### Programing Langues:
+### Programming Languages:
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
@@ -88,13 +88,14 @@ This section list our Supported Programing Langues and Frameworks.
 --------------
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Which Platforms we Supporting?
-We supporting currently thies platforms if you have any Questins regarings Linux or Windows feel free to contact us.
+### Which Platforms we're supporting?
+We're currently supporting this platforms if you have any Questions regarding Linux or Windows feel free to contact us.
+
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
 
-## Intresed? Find us on:
+## Interested? Find us on:
 
  * [![](https://img.shields.io/badge/Lifepeak-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/G9zzDPvF4Y)
  * [![](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://discord.gg/G9zzDPvF4Y)
@@ -104,8 +105,8 @@ We supporting currently thies platforms if you have any Questins regarings Linux
 <!-- GETTING STARTED -->
 # lp_carlock
 
-lp_carlock is an simple all in one carlocking system for fivem.
-You can lock/unlock and share your key with your frends.
+lp_carlock is a simple all in one car locking system for fivem.
+You can lock/unlock and share your key with your friends.
 
 
 ### Preview
@@ -115,10 +116,8 @@ INSERT IMAGES/VIDEOS
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Download the Skript at the  [Lifepeak-Gitlab](https://gitlab.lifepeak.de/lifepeak-freescripts/lp_carlock)
-2. Costomise the config
+1. Download the Script at the [Lifepeak-Gitlab](https://gitlab.lifepeak.de/lifepeak-freescripts/lp_carlock)
+2. Customize the config
    ```lua
    Config = {}
    Config.RequiredKey = 'U'
@@ -132,7 +131,7 @@ _Below is an example of how you can instruct your audience on installing and set
    }
    
    ```
-3. add the staring command to your server.cfg
+3. Add the staring command to your server.cfg
    ```cfg
    start lp_carlock
    ```
@@ -145,10 +144,10 @@ _Below is an example of how you can instruct your audience on installing and set
 ## Usage
 1. Stand next to your personal Vehicle and press ```U``` to lock or unlock your car.
 
-2. Type ```lua /sharekey playerId ``` to share your key to your frends. (Works only for your personal vehicles. )
-Type ```lua /revokekey playerId ``` to revoke the acces of your frend. (Works only for your personal vehicles. )
-3. Your key not wokring well Type ```lua /fixcarlock``` fix them.
-4. If your a an Admin and need the keys fom a Car next to you. Type ```lua /adminkeysplayerId ``` to get  keys. (Admin Groups get configureded in the Config file)
+2. Type ```lua /sharekey playerId ``` to share your key to your friends. (Works only for your personal vehicles.)
+Type ```lua /revokekey playerId ``` to revoke the access of your friend. (Works only for your personal vehicles. )
+3. Your CarKey not working well, Type ```lua /fixcarlock``` fix them.
+4. If you're an Admin and need the keys for a Car next to you. Type ```lua /adminkeysplayerId ``` to get keys. (Admin Groups get configured in the Config file)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
