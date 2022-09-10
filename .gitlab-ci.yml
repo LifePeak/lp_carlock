@@ -11,7 +11,7 @@ before_script:
   - rm -rf temp
 
 include:
-- project: lifepeak/skripts/fivem_lua_linter
+- project: lifepeak/fivem/skripts/fivem_lua_linter
   ref: main
   file:
       - .gitlab-ci.yml
