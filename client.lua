@@ -175,7 +175,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 
-		if (IsControlJustPressed(1, Config.RequiredKey)) and not IsLockingCar then
+		if (IsControlJustPressed(1, Keys[Config.RequiredKey])) and not IsLockingCar then
 			local LocalPedId = PlayerPedId()
 			local PlayerCoords = GetEntityCoords(LocalPedId)
 
@@ -294,7 +294,7 @@ end)
 RegisterNetEvent("lp_carlock:client:allowKeysForCar")
 AddEventHandler("lp_carlock:client:allowKeysForCar", function(plate)
 	SharedVehicles[plate] = true
-	TriggerEvent('notifications', -1, _U('car_interaction'), _U('got_key_for_car',plate)
+	TriggerEvent('notifications', -1, _U('car_interaction'), _U('got_key_for_car',plate))
 end)
 
 RegisterNetEvent("lp_carlock:client:revokeKeysFromCar")

@@ -121,7 +121,7 @@ _Below is an example of how you can instruct your audience on installing and set
 2. Costomise the config
    ```lua
    Config = {}
-   Config.RequiredKey = Keys['U']
+   Config.RequiredKey = 'U'
    Config.PlayerCarArea = 30
    Config.Locale = 'de'
    Config.EnableJobvehicle = true

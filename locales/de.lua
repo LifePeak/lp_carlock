@@ -9,7 +9,7 @@ Locales['de'] = {
     ['not_allowed']                 = 'Du darfst das nicht.',
 ------------------------------------------------[ admin ]------------------------------------------------
     ['admin_car_interaction']       = 'Admin: Fahrzeug Interaktion',
-    ['admin_got_key']       = 'Du erhältst den Schlüssel für %s',    
+    ['admin_got_key']       = 'Du erhältst den Schlüssel für %s',
 
 ------------------------------------------------[ car key ]------------------------------------------------
     ['share_key_with']              = 'Du teilst den Schlüssel vom Fahrzeug (%s) nun mit %s',
