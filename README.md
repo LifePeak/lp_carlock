@@ -115,6 +115,9 @@ INSERT IMAGES/VIDEOS
   
 
 ### Installation
+0. Check Requirements
+      - [ ] es_extended
+      - [ ] esx_notifications or any scripts that's supports ```TriggerClientEvent('notification', xPlayer.source, -1, "text", "text")) ```
 
 1. Download the Script at the [Lifepeak-Gitlab](https://gitlab.lifepeak.de/lifepeak-freescripts/lp_carlock)
 2. Customize the config
