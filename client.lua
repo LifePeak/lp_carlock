@@ -255,8 +255,8 @@ RegisterCommand("sharekey", function(source, args)
 		else
 			TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
 		end
-	else
-		print(json.encode(args))
+	--else
+		--print(json.encode(args))
 	end
 end)
 
