@@ -147,9 +147,9 @@ INSERT IMAGES/VIDEOS
 ## Usage
 1. Stand next to your personal Vehicle and press ```U``` to lock or unlock your car.
 
-2. Type ```lua /sharekey playerId ``` to share your key to your friends. (Works only for your personal vehicles.)
-Type ```lua /revokekey playerId ``` to revoke the access of your friend. (Works only for your personal vehicles. )
-3. Your CarKey not working well, Type ```lua /fixcarlock``` fix them.
+2. Type ``lua /sharekey playerId `` to share your key to your friends. (Works only for your personal vehicles.)
+Type ``lua /revokekey playerId `` to revoke the access of your friend. (Works only for your personal vehicles. )
+3. Your CarKey not working well, Type ``lua /fixcarlock`` fix them.
 4. If you're an Admin and need the keys for a Car next to you. Type ```lua /adminkeysplayerId ``` to get keys. (Admin Groups get configured in the Config file)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
