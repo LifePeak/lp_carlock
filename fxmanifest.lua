@@ -33,6 +33,5 @@ files {
 }
 
 dependencies {
-	'es_extended',
-	'notifications'
+	'es_extended'
 }
