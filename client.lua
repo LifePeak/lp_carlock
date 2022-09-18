@@ -54,7 +54,7 @@ local function ToggleCarLock(Car)
 			PlayVehicleDoorCloseSound(Car, 1)
 			DisableControlAction(0, 75,  true) -- Disable exit vehicle
 			DisableControlAction(27, 75, true) -- Disable exit vehicle
-			notificationHandler("car",_U('car_interaction'),_U('car_locked',plate),"red","success.mp3")
+			notificationHandler("car",_U('car_interaction'),_U('car_locked'),"red","success.mp3")
 			--TriggerEvent("notifications", -1,_U('car_interaction'), _U('car_locked'))
 			if not IsPedInAnyVehicle(PlayerPedId(), true) then
 				TaskPlayAnim(PlayerPedId(), Animation, "fob_click_fp", 8.0, 8.0, -1, 48, 1, false, false, false)
@@ -72,7 +72,7 @@ local function ToggleCarLock(Car)
 			SetVehicleDoorsLocked(Car, 1)
 			PlayVehicleDoorOpenSound(Car, 0)
 			SetVehicleDoorsLockedForAllPlayers(Car, 0) -- new
-			notificationHandler("car",_U('car_interaction'),_U('car_unlocked',plate),"green","success.mp3")
+			notificationHandler("car",_U('car_interaction'),_U('car_unlocked'),"green","success.mp3")
 			--TriggerEvent('notifications', -1, _U('car_interaction'), _U('car_unlocked'))
 			if not IsPedInAnyVehicle(PlayerPedId(), true) then
 				TaskPlayAnim(PlayerPedId(), Animation, "fob_click_fp", 8.0, 8.0, -1, 48, 1, false, false, false)
