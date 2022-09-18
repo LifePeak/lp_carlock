@@ -107,6 +107,7 @@ We're currently supporting this platforms if you have any Questions regarding Li
 
 lp_carlock is a simple all in one car locking system for fivem.
 You can lock/unlock and share your key with your friends.
+Working with lp_notify. :) https://scripts.lifepeak.de/package/5124963
 
 
 ### Preview
@@ -120,19 +121,19 @@ INSERT IMAGES/VIDEOS
 1. Download the Script at the [Lifepeak-Gitlab](https://gitlab.lifepeak.de/lifepeak-freescripts/lp_carlock)
 2. Customize the config
    ```lua
-  Config = {}
-  Config.Notification = {}
-  Config.RequiredKey = 'U'
-  Config.PlayerCarArea = 30
-  Config.Locale  = 'de'
-  Config.EnableJobvehicle = true --not implimentet jet
-  Config.Notification.System = "none", -- lp_notify / none
-  Config.Notification.postion = "top right" -- Only works lp_notify! | lp_"top right", [top Left, top Right, bottom Left, bottom Right]
-  Config.Notification.displaytime = 13000 -- ms
-  Config.AdminGroups = {
-    superadmin = true,
-    admin = true
-  }
+    Config = {}
+    Config.Notification = {}
+    Config.RequiredKey = 'U'
+    Config.PlayerCarArea = 30
+    Config.Locale  = 'de'
+    Config.EnableJobvehicle = true --not implimentet jet
+    Config.Notification.System = "none", -- lp_notify / none
+    Config.Notification.postion = "top right" -- Only works lp_notify! | lp_"top right", [top Left, top Right, bottom Left, bottom Right]
+    Config.Notification.displaytime = 13000 -- ms
+    Config.AdminGroups = {
+      superadmin = true,
+      admin = true
+    }
   -- You can also give player AcePerms to admincarlockkeys instead
    ```
 3. Add the staring command to your server.cfg
