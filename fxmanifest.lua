@@ -16,14 +16,11 @@ shared_script {
 client_scripts {
 	"@es_extended/locale.lua",
     "client.lua",
-	'@mysql-async/lib/MySQL.lua'
 }
 
 server_scripts {
 	"server.lua",
-	'@es_extended/locale.lua',
-	'@mysql-async/lib/MySQL.lua'
-	
+	'@es_extended/locale.lua'
 }
 
 ui_page 'html/ui.html'

@@ -313,7 +313,7 @@ RegisterNetEvent("lp_carlock:client:allowKeysForCar")
 AddEventHandler("lp_carlock:client:allowKeysForCar", function(plate)
 	SharedVehicles[plate] = true
 	--TriggerEvent('notifications', -1, _U('car_interaction'), _U('got_key_for_car',plate))
-	notificationHandler("car",_U('car_interaction'),_U('got_key_for_car',plate,"blue","sound.mp3")
+	notificationHandler("car",_U('car_interaction'),_U('got_key_for_car',plate,"blue","sound.mp3"))
 
 end)
 
