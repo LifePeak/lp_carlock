@@ -7,7 +7,7 @@ function notificationHandler(xPlayer,icon,title,msg,color,sound)
 	if Config.Notification.System ~= 'lp_notify' then
 		xPlayer.showNotification(title..", "..msg, false, false, 140)
 	else
-		xPlayer.triggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.postion,Config.Notification.displaytime,sound)
+		xPlayer.triggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.Postion,Config.Notification.displaytime,sound)
 	end
 end
 

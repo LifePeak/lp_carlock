@@ -27,7 +27,7 @@ function notificationHandler(icon,title,msg,color,sound)
 	if Config.NotificationSystem ~= 'lp_notify' then
 		ESX.ShowNotification(title..", "..msg, Config.Notification.displaytime, "info")
 	else
-		TriggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.postion,Config.Notification.displaytime,sound)
+		TriggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.Postion,Config.Notification.displaytime,sound)
 	end
 end
 -- Script Variables (dont change them)
@@ -313,14 +313,14 @@ RegisterNetEvent("lp_carlock:client:allowKeysForCar")
 AddEventHandler("lp_carlock:client:allowKeysForCar", function(plate)
 	SharedVehicles[plate] = true
 	--TriggerEvent('notifications', -1, _U('car_interaction'), _U('got_key_for_car',plate))
-	notificationHandler("car",_U('car_interaction'),_U('got_key_for_car',plate,"blue","sound.mp3"))
+	notificationHandler("car",_U('car_interaction'),_U('got_key_for_car',plate),"blue","sound.mp3")
 
 end)
 
 RegisterNetEvent("lp_carlock:client:revokeKeysFromCar")
 AddEventHandler("lp_carlock:client:revokeKeysFromCar", function(plate)
 	SharedVehicles[plate] = false
-	notificationHandler("car",_U('car_interaction'),_U('revoke_key_for_car',plate,"blue","sound.mp3")
+	notificationHandler("car",_U('car_interaction'),_U('revoke_key_for_car',plate),"blue","sound.mp3")
 	--TriggerEvent('notifications', -1, _U('car_interaction'), _U('revoke_key_for_car',plate))
 
 end)
