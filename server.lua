@@ -2,6 +2,14 @@
 ESX = nil
 
 TriggerEvent("esx:getSharedObject",function(obj) ESX = obj end)
+-- notification Handler
+function notificationHandler(xPlayer,icon,title,msg,color,sound)
+	if Config.Notification.System ~= 'lp_notify' then
+		xPlayer.showNotification(title..", "..msg, false, false, 140)
+	else
+		xPlayer.triggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.postion,Config.Notification.displaytime,sound)
+	end
+end
 
 ESX.RegisterServerCallback('lp_carlock:server:syncLockState', function(source, cb, vehicleId, locked)
 	TriggerClientEvent('lp_carlock:client:syncLockState', -1, vehicleId, locked)
@@ -15,7 +23,8 @@ ESX.RegisterServerCallback('lp_carlock:server:sendKeysTo', function(source, cb, 
 	if xTarget then
 		TriggerClientEvent('lp_carlock:client:allowKeysForCar', xTarget.source, plate)
 	else
-		TriggerClientEvent('notification', xPlayer.source, -1, _U('car_interaction'), _U('player_not_exist'))
+		notificationHandler(xPlayer,"car",_U('car_interaction'),_U('player_not_exist'),"red","error.mp3")
+		--TriggerClientEvent('notification', xPlayer.source, -1, _U('car_interaction'), _U('player_not_exist'))
 	end
 	cb()
 end)
@@ -24,10 +33,13 @@ ESX.RegisterServerCallback('lp_carlock:server:sendKeysToAdmin', function(source,
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	if Config.AdminGroups[xPlayer.group] or IsPlayerAceAllowed(source, 'admincarlockkeys') then
-		TriggerClientEvent('notifications', xPlayer.source, -1, _U('admin_car_interaction'), _U('admin_got_key',plate))
+		notificationHandler(xPlayer,"car",_U('admin_car_interaction'),_U('admin_got_key',plate),"green","success.mp3")
+		--TriggerClientEvent('notification', xPlayer.source, -1, _U('admin_car_interaction'), _U('admin_got_key',plate))
 		TriggerClientEvent('lp_carlock:client:allowKeysForCar', xPlayer.source, plate)
 	else
-		TriggerClientEvent('notification', xPlayer.source, -1, _U('admin_car_interaction'), _U('not_allowed'))
+		--TriggerClientEvent('notification', xPlayer.source, -1, _U('admin_car_interaction'), _U('not_allowed'))
+		notificationHandler(xPlayer,"car",_U('admin_car_interaction'),_U('not_allowed'),"red","error.mp3")
+
 	end
 	cb()
 end)
@@ -39,7 +51,8 @@ ESX.RegisterServerCallback('lp_carlock:server:revokeKeysFrom', function(source, 
 	if xTarget then
 		TriggerClientEvent('lp_carlock:client:revokeKeysFromCar', xTarget.source, plate)
 	else
-		TriggerClientEvent('notification', xPlayer.source, -1, _U('car_interaction'), _U('player_not_exist'))
+		notificationHandler(xPlayer,"car",_U('car_interaction'),_U('player_not_exist'),"red","error.mp3")
+		--TriggerClientEvent('notification', xPlayer.source, -1, _U('car_interaction'), _U('player_not_exist'))
 	end
 	cb()
 end)

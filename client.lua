@@ -22,7 +22,14 @@ Citizen.CreateThread(function()
     end
 end)
 
-
+-- notification Handler
+function notificationHandler(icon,title,msg,color,sound)
+	if Config.NotificationSystem ~= 'lp_notify' then
+		ESX.ShowNotification(title..", "..msg, Config.Notification.displaytime, "info")
+	else
+		TriggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.postion,Config.Notification.displaytime,sound)
+	end
+end
 -- Script Variables (dont change them)
 local IsLockingCar   = false
 local MyVehicles     = {}
@@ -47,7 +54,8 @@ local function ToggleCarLock(Car)
 			PlayVehicleDoorCloseSound(Car, 1)
 			DisableControlAction(0, 75,  true) -- Disable exit vehicle
 			DisableControlAction(27, 75, true) -- Disable exit vehicle
-			TriggerEvent("notifications", -1,_U('car_interaction'), _U('car_locked'))
+			notificationHandler("car",_U('car_interaction'),_U('car_locked',plate),"red","success.mp3")
+			--TriggerEvent("notifications", -1,_U('car_interaction'), _U('car_locked'))
 			if not IsPedInAnyVehicle(PlayerPedId(), true) then
 				TaskPlayAnim(PlayerPedId(), Animation, "fob_click_fp", 8.0, 8.0, -1, 48, 1, false, false, false)
 			end
@@ -64,7 +72,8 @@ local function ToggleCarLock(Car)
 			SetVehicleDoorsLocked(Car, 1)
 			PlayVehicleDoorOpenSound(Car, 0)
 			SetVehicleDoorsLockedForAllPlayers(Car, 0) -- new
-			TriggerEvent('notifications', -1, _U('car_interaction'), _U('car_unlocked'))
+			notificationHandler("car",_U('car_interaction'),_U('car_unlocked',plate),"green","success.mp3")
+			--TriggerEvent('notifications', -1, _U('car_interaction'), _U('car_unlocked'))
 			if not IsPedInAnyVehicle(PlayerPedId(), true) then
 				TaskPlayAnim(PlayerPedId(), Animation, "fob_click_fp", 8.0, 8.0, -1, 48, 1, false, false, false)
 			end
@@ -92,7 +101,8 @@ local function GetClosestKnownCarPlate()
 
 	-- Return if not cars where found.
 	if #CarList == 0 then
-		ESX.ShowNotification(_U('no_vehicle_in_range'))
+		notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+		--ESX.ShowNotification(_U('no_vehicle_in_range'))
 		return
 	end
 
@@ -133,7 +143,8 @@ local function GetClosestCarPlate()
 
 	-- Return if not cars where found.
 	if #CarList == 0 then
-		ESX.ShowNotification(_U('no_vehicle_in_range'))
+		notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+		--ESX.ShowNotification(_U('no_vehicle_in_range'))
 		return
 	end
 
@@ -181,7 +192,8 @@ Citizen.CreateThread(function()
 
 			-- Return if not cars where found.
 			if #CarList == 0 then
-				ESX.ShowNotification(_U('no_vehicle_in_range'))
+				notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+				--ESX.ShowNotification(_U('no_vehicle_in_range'))
 				return
 			end
 
@@ -235,7 +247,8 @@ Citizen.CreateThread(function()
 			end
 
 			if ClosestVehicleEntity == nil then
-				TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
+				notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+				--TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
 			else
 				ToggleCarLock(ClosestVehicleEntity)
 			end
@@ -250,10 +263,13 @@ RegisterCommand("sharekey", function(source, args)
 		local car = GetClosestKnownCarPlate()
 		local playerId = tonumber(args[1])
 		if car then
-			TriggerEvent('notifications', -1, _U('car_interaction'), _U('share_key_with',car,playerId))
+			--TriggerEvent('notifications', -1, _U('car_interaction'), _U('share_key_with',car,playerId))
+			notificationHandler("car",_U('car_interaction'),_U('share_key_with',car,playerId),"blue","sound.mp3")
+
 			ESX.TriggerServerCallback('lp_carlock:server:sendKeysTo', function() end, car, playerId)
 		else
-			TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
+			notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+			--TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
 		end
 	--else
 		--print(json.encode(args))
@@ -265,10 +281,13 @@ RegisterCommand("revokekey", function(source, args)
 		local car = GetClosestKnownCarPlate()
 		local playerId = tonumber(args[1])
 		if car then
-			TriggerEvent('notifications', -1, _U('car_interaction'),_U('stop_share_key_with',car,playerId))
+			--TriggerEvent('notifications', -1, _U('car_interaction'),_U('stop_share_key_with',car,playerId))
+			notificationHandler("car",_U('car_interaction'),_U('stop_share_key_with',car,playerId),"blue","sound.mp3")
+
 			ESX.TriggerServerCallback('lp_carlock:server:revokeKeysFrom', function() end, car, playerId)
 		else
-			TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
+			notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+			--TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
 		end
 	end
 end)
@@ -278,7 +297,8 @@ RegisterCommand("adminkeys", function(source, args)
 	if car then
 		ESX.TriggerServerCallback('lp_carlock:server:sendKeysToAdmin', function() end, car)
 	else
-		TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
+		notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+		--TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
 	end
 end)
 
@@ -292,13 +312,17 @@ end)
 RegisterNetEvent("lp_carlock:client:allowKeysForCar")
 AddEventHandler("lp_carlock:client:allowKeysForCar", function(plate)
 	SharedVehicles[plate] = true
-	TriggerEvent('notifications', -1, _U('car_interaction'), _U('got_key_for_car',plate))
+	--TriggerEvent('notifications', -1, _U('car_interaction'), _U('got_key_for_car',plate))
+	notificationHandler("car",_U('car_interaction'),_U('got_key_for_car',plate,"blue","sound.mp3")
+
 end)
 
 RegisterNetEvent("lp_carlock:client:revokeKeysFromCar")
 AddEventHandler("lp_carlock:client:revokeKeysFromCar", function(plate)
 	SharedVehicles[plate] = false
-	TriggerEvent('notifications', -1, _U('car_interaction'), _U('revoke_key_for_car',plate))
+	notificationHandler("car",_U('car_interaction'),_U('revoke_key_for_car',plate,"blue","sound.mp3")
+	--TriggerEvent('notifications', -1, _U('car_interaction'), _U('revoke_key_for_car',plate))
+
 end)
 
 RegisterNetEvent("lp_carlock:client:syncLockState")
