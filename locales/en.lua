@@ -1,7 +1,7 @@
 Locales['en'] = {
     ------------------------------------------------[ general ]------------------------------------------------
         ['car_interaction']             = 'Vehicle Interaction',
-        ['car_locked']                  = 'Vehicle locked', 
+        ['car_locked']                  = 'Vehicle locked',
         ['car_unlocked']                = 'Vehicle unlocked',
         ['no_vehicle_in_range']         = 'No vehicle nearby!',
         ['playerId']                    = 'Magic  SpielerID',
