@@ -223,15 +223,21 @@ Citizen.CreateThread(function()
 					end
 				else
 					SleepIfCallback = 300
-					ESX.TriggerServerCallback('carlock:isVehicleOwner', function(owner)
-						if owner then
+					ESX.TriggerServerCallback('lp_carlock:isVehicleOwner', function(owner)
+						if owner ~= true then
+							NotMyVehicle[VehiclePlate] = true
+						end
+						if owner == true then
 							MyVehicles[VehiclePlate] = true
 							table.insert(CloseCars, {
 								Car = v,
 								Distance = VehicleDistance
 							})
-						else
-							NotMyVehicle[VehiclePlate] = true
+						end
+						if Config.EnableJobvehicle == true then
+							if owner == ESX.PlayerData.job.name then
+								SharedVehicles[VehiclePlate] = true
+							end
 						end
 					end, VehiclePlate)
 				end

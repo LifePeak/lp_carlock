@@ -57,7 +57,8 @@ ESX.RegisterServerCallback('lp_carlock:server:revokeKeysFrom', function(source, 
 	cb()
 end)
 
-ESX.RegisterServerCallback('carlock:isVehicleOwner', function(source, cb, plate)
+ESX.RegisterServerCallback('lp_carlock:isVehicleOwner', function(source, cb, plate)
+	local returncode = false
 	local xTarget	 = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.fetchAll('SELECT owner FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
@@ -65,9 +66,15 @@ ESX.RegisterServerCallback('carlock:isVehicleOwner', function(source, cb, plate)
 		['@plate'] = plate
 	}, function(result)
 		if result[1] then
-			cb(result[1].owner == xTarget.identifier)
+			returncode = result[1].owner == xTarget.identifier
 		else
-			cb(false)
+		if Config.EnableJobvehicle == true then
+			returncode = MySQL.Async.fetchAll('SELECT job FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {['@owner'] = xTarget.identifier,['@plate'] = plate})[1].job
 		end
+	end)
+		if returncode == nil then
+			returncode=false
+		end
+		cb(returncode)
 	end)
 end)
