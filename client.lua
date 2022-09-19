@@ -1,3 +1,4 @@
+------------------------------------| Variable Declaration |---------------------------------
 local Keys = {
 	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57,
 	["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177,
@@ -9,8 +10,14 @@ local Keys = {
 	["LEFT"] = 174, ["RIGHT"] = 175, ["TOP"] = 27, ["DOWN"] = 173,
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
-
+-- Script Variables (dont change them)
+local IsLockingCar   = false
+local MyVehicles     = {}
+local SharedVehicles = {}
+local NotMyVehicle   = {}
+local Animation 	 = "anim@mp_player_intmenu@key_fob@"
 local ESX = nil
+------------------------------------| Initial ESX |------------------------------------------
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -21,7 +28,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(10)
     end
 end)
-
+------------------------------------| Usfull Functions |-------------------------------------
 -- notification Handler
 function notificationHandler(icon,title,msg,color,sound)
 	if Config.NotificationSystem ~= 'lp_notify' then
@@ -30,12 +37,7 @@ function notificationHandler(icon,title,msg,color,sound)
 		TriggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.Postion,Config.Notification.displaytime,sound)
 	end
 end
--- Script Variables (dont change them)
-local IsLockingCar   = false
-local MyVehicles     = {}
-local SharedVehicles = {}
-local NotMyVehicle   = {}
-local Animation 	 = "anim@mp_player_intmenu@key_fob@"
+
 local function ToggleCarLock(Car)
 	IsLockingCar = true
 
@@ -174,6 +176,7 @@ local function GetClosestCarPlate()
 	return ClosestVehiclePlate
 end
 
+------------------------------------| Open Threads |-------------------------------------
 Citizen.CreateThread(function()
 	-- Load Animation
 	RequestAnimDict(Animation)
@@ -257,7 +260,7 @@ Citizen.CreateThread(function()
 end)
 
 
--- Some Chat-Commands
+------------------------------------| Register Commands |-------------------------------------
 RegisterCommand("sharekey", function(source, args)
 	if #args == 1 then
 		local car = GetClosestKnownCarPlate()
@@ -275,7 +278,6 @@ RegisterCommand("sharekey", function(source, args)
 		--print(json.encode(args))
 	end
 end)
-
 RegisterCommand("revokekey", function(source, args)
 	if #args == 1 then
 		local car = GetClosestKnownCarPlate()
@@ -291,7 +293,6 @@ RegisterCommand("revokekey", function(source, args)
 		end
 	end
 end)
-
 RegisterCommand("adminkeys", function(source, args)
 	local car = GetClosestCarPlate()
 	if car then
@@ -301,14 +302,13 @@ RegisterCommand("adminkeys", function(source, args)
 		--TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
 	end
 end)
-
 RegisterCommand("fixcarlock", function(source, args)
 	NotMyVehicle = {}
 	MyVehicles = {}
 	SharedVehicles = {}
 end)
 
--- Server Hooks
+------------------------------------| Register Net Events |-------------------------------------
 RegisterNetEvent("lp_carlock:client:allowKeysForCar")
 AddEventHandler("lp_carlock:client:allowKeysForCar", function(plate)
 	SharedVehicles[plate] = true
