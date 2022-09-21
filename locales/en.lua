@@ -20,5 +20,5 @@ Locales['en'] = {
         ['chat_suggestion_sharekey']    = 'Share the key of your car with another player.',
         ['chat_suggestion_revokekey']   = 'Take the key back of your car from another player.',
         ['chat_suggestion_fixcarlock']  = 'Try to repair the key system.',
-        ['chat_suggestion_adminkeys']   = 'Admin: Take the keys from the car.',
+        ['chat_suggestion_adminkeys']   = 'Admin: Take the keys from the car.'
     }

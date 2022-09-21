@@ -31,8 +31,8 @@ end)
 ------------------------------------| Usfull Functions |-------------------------------------
 -- notification Handler
 function notificationHandler(icon,title,msg,color,sound)
-	if Config.NotificationSystem ~= 'lp_notify' then
-		ESX.ShowNotification(title..", "..msg, Config.Notification.displaytime, "info")
+	if Config.Notification.System ~= 'lp_notify' then
+		ESX.ShowNotification(title..", "..msg)
 	else
 		TriggerEvent("lifepeak.notify",icon,title,msg,color,true,Config.Notification.Postion,Config.Notification.displaytime,sound)
 	end

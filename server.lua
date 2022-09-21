@@ -60,7 +60,6 @@ end)
 ESX.RegisterServerCallback('lp_carlock:isVehicleOwner', function(source, cb, plate)
 	local returncode = false
 	local xTarget	 = ESX.GetPlayerFromId(source)
-
 	MySQL.Async.fetchAll('SELECT owner FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
 		['@owner'] = xTarget.identifier,
 		['@plate'] = plate
@@ -70,7 +69,8 @@ ESX.RegisterServerCallback('lp_carlock:isVehicleOwner', function(source, cb, pla
 		end
 		if returncode == false then
 			if Config.EnableJobvehicle == true then
-				returncode = MySQL.Async.fetchAll('SELECT job FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {['@owner'] = xTarget.identifier,['@plate'] = plate})[1].job
+
+				returncode=MySQL.scalar.await('SELECT job FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {['@owner'] = xTarget.identifier,['@plate'] = plate})
 			end
 		end
 	

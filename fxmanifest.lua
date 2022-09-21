@@ -10,17 +10,21 @@ url 'https://github.com/zickzackhd'
 lua54 'yes'
 
 shared_script {
-	'config.lua'
+	'config.lua',
 }
 
 client_scripts {
 	"@es_extended/locale.lua",
+	'locales/*.lua',
     "client.lua",
+
 }
 
 server_scripts {
-	"server.lua",
-	'@es_extended/locale.lua'
+	'@mysql-async/lib/MySQL.lua',
+	'@es_extended/locale.lua',
+	'locales/*.lua',
+	"server.lua"
 }
 
 ui_page 'html/ui.html'
