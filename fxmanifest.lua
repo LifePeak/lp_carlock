@@ -2,7 +2,7 @@
 -- Resource Metadata
 fx_version 'cerulean'
 games {'gta5'}
-author 'ZickZackHD <ZickZackHD#4834>'
+author 'ZickZackHD <ZickZackHD#4834>, SeaLife'
 description 'Car lock System by Lifepeak'
 version '1.0.6'
 name 'lp_carlock'
@@ -25,12 +25,6 @@ server_scripts {
 	'@es_extended/locale.lua',
 	'locales/*.lua',
 	"server.lua"
-}
-
-ui_page 'html/ui.html'
-
-files {
-	"**.*"
 }
 
 dependencies {
