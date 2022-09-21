@@ -120,21 +120,21 @@ INSERT IMAGES/VIDEOS
       - [ ] es_extended
 1. Download the Script at the [Lifepeak-Gitlab](https://gitlab.lifepeak.de/lifepeak-freescripts/lp_carlock)
 2. Customize the config
-   ```lua
+  ```lua
     Config = {}
-    Config.Notification = {}
     Config.RequiredKey = 'U'
     Config.PlayerCarArea = 30
     Config.Locale  = 'de'
-    Config.EnableJobvehicle = true --not implimentet jet
-    Config.Notification.System = "none", -- lp_notify / none
-    Config.Notification.postion = "top right" -- Only works lp_notify! | lp_"top right", [top Left, top Right, bottom Left, bottom Right]
-    Config.Notification.displaytime = 13000 -- ms
+    Config.EnableJobvehicle = true -- players can open all vehicle with same job.
+    Config.Notification = {}
+    Config.Notification.System = "none" -- lp_notify / none
+    Config.Notification.Postion = "top right" -- Only works lp_notify! | lp_"top right", [top Left, top Right, bottom Left, bottom Right]
+    Config.Notification.Displaytime = 1000 -- ms
     Config.AdminGroups = {
       superadmin = true,
       admin = true
     }
-  -- You can also give player AcePerms to admincarlockkeys instead
+    -- You can also give player AcePerms to admincarlockkeys instead
    ```
 3. Add the staring command to your server.cfg
    ```cfg
@@ -148,11 +148,10 @@ INSERT IMAGES/VIDEOS
 <!-- USAGE EXAMPLES -->
 ## Usage
 1. Stand next to your personal Vehicle and press ```U``` to lock or unlock your car.
-
 2. Type `` /sharekey playerId `` to share your key to your friends. (Works only for your personal vehicles.)
-Type `` /revokekey playerId `` to revoke the access of your friend. (Works only for your personal vehicles. )
-3. Your CarKey not working well, Type `` /fixcarlock`` fix them.
-4. If you're an Admin and need the keys for a Car next to you. Type ``` /adminkeysplayerId ``` to get keys. (Admin Groups get configured in the Config file)
+3. Type `` /revokekey playerId `` to revoke the access of your friend. (Works only for your personal vehicles. )
+4. Your CarKey not working well, Type `` /fixcarlock`` fix them.
+5. If you're an Admin and need the keys for a Car next to you. Type ``` /adminkeysplayerId ``` to get keys. (Admin Groups get configured in the Config file)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
