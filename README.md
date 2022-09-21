@@ -163,7 +163,7 @@ Working with lp_notify. :) https://scripts.lifepeak.de/package/5124963
 2. Type `` /sharekey playerId `` to share your key to your friends. (Works only for your personal vehicles.)
 3. Type `` /revokekey playerId `` to revoke the access of your friend. (Works only for your personal vehicles. )
 4. Your CarKey not working well, Type `` /fixcarlock`` fix them.
-5. If you're an Admin and need the keys for a Car next to you. Type ``` /adminkeysplayerId ``` to get keys. (Admin Groups get configured in the Config file)
+5. If you're an Admin and need the keys for a Car next to you. Type ``` /adminkeys playerId ``` to get keys. (Admin Groups get configured in the Config file)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
