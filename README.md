@@ -111,10 +111,21 @@ Working with lp_notify. :) https://scripts.lifepeak.de/package/5124963
 
 
 ### Preview
-INSERT IMAGES/VIDEOS
-#########################################
-  
-
+<a href="./preview/carlock_adminkey.png">
+<img src="./preview/carlock_adminkey.png" width="280" height="150"/>
+</a>
+<a href="./preview/carlock_lock.png">
+<img src="./preview/carlock_lock.png" width="280" height="150"/>
+</a>
+<a href="./preview/carlock_revokey.png">
+<img src="./preview/carlock_revokey.png" width="280" height="150"/>
+</a>
+<a href="./preview/carlock_sharekey.png">
+<img src="./preview/carlock_sharekey.png" width="280" height="150"/>
+</a>
+<a href="./preview/carlock_unlock.png">
+<img src="./preview/carlock_unlock.png" width="280" height="150"/>
+</a>
 ### Installation
 0. Check Requirements
       - [ ] es_extended
