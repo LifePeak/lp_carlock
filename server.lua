@@ -60,7 +60,7 @@ end)
 ESX.RegisterServerCallback('lp_carlock:isVehicleOwner', function(source, cb, plate)
 	local returncode = false
 	local xTarget	 = ESX.GetPlayerFromId(source)
-	MySQL.Async.fetchAll('SELECT owner FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
+	MySQL.Async.fetchScalar('SELECT owner FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
 		['@owner'] = xTarget.identifier,
 		['@plate'] = plate
 	}, function(result)
