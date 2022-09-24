@@ -8,8 +8,13 @@
   <a href="https://discord.gg/G9zzDPvF4Y">
     <img src="https://i.imgur.com/kqu8Gp4.png" alt="Logo" width="180" height="180">
   </a>
-
+  
   <h3 align="center">LifePeak - Skripts</h3>
+  
+  <a href="https://discord.gg/G9zzDPvF4Y">
+  <img src="https://badgen.net/discord/members/G9zzDPvF4Y"> </img>
+
+  </a>
 
   <p align="center">
     Any fool can write code that a computer can understand. Good programmers write code that humans can understand!
@@ -24,7 +29,6 @@
     <a href="https://discord.gg/G9zzDPvF4Y">Request Feature</a>
   </p>
 </div>
-
 
 
 <!-- TABLE OF CONTENTS 
