@@ -11,7 +11,7 @@
   
   <h3 align="center">LifePeak - Skripts</h3>
   
-  <a href="https://discord.gg/G9zzDPvF4Y">
+  <a href="tinyurl.com/lifepeak">
   <img src="https://badgen.net/discord/members/G9zzDPvF4Y"> </img>
 
   </a>
