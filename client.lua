@@ -193,73 +193,74 @@ Citizen.CreateThread(function()
 
 			local CarList = ESX.Game.GetVehiclesInArea(PlayerCoords, Config.PlayerCarArea)
 
-			-- Return if not cars where found.
 			if #CarList == 0 then
 				notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
 				--ESX.ShowNotification(_U('no_vehicle_in_range'))
-				return
 			end
+			if #CarList > 0 then
 
-			local CloseCars = {}
-			local SleepIfCallback = 0
+			
+				local CloseCars = {}
+				local SleepIfCallback = 0
 
-			print("Known Keys: ")
-			print("Shared:          " .. json.encode(SharedVehicles))
-			print("My Vehicles:     " .. json.encode(MyVehicles))
-			print("Not my Vehicles: " .. json.encode(NotMyVehicle))
+				print("Known Keys: ")
+				print("Shared:          " .. json.encode(SharedVehicles))
+				print("My Vehicles:     " .. json.encode(MyVehicles))
+				print("Not my Vehicles: " .. json.encode(NotMyVehicle))
 
-			for k, v in ipairs(CarList) do
-				local VehicleCoords = GetEntityCoords(v)
-				local VehicleDistance = Vdist(VehicleCoords.x, VehicleCoords.y, VehicleCoords.z, PlayerCoords.x, PlayerCoords.y, PlayerCoords.z)
+				for k, v in ipairs(CarList) do
+					local VehicleCoords = GetEntityCoords(v)
+					local VehicleDistance = Vdist(VehicleCoords.x, VehicleCoords.y, VehicleCoords.z, PlayerCoords.x, PlayerCoords.y, PlayerCoords.z)
 
-				local VehiclePlate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
+					local VehiclePlate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
 
-				if MyVehicles[VehiclePlate] or NotMyVehicle[VehiclePlate] or SharedVehicles[VehiclePlate] then
-					if MyVehicles[VehiclePlate] or SharedVehicles[VehiclePlate] then
-						table.insert(CloseCars, {
-							Car = v,
-							Distance = VehicleDistance
-						})
-					end
-				else
-					SleepIfCallback = 300
-					ESX.TriggerServerCallback('lp_carlock:isVehicleOwner', function(owner)
-						if owner ~= true then
-							NotMyVehicle[VehiclePlate] = true
-						end
-						if owner == true then
-							MyVehicles[VehiclePlate] = true
+					if MyVehicles[VehiclePlate] or NotMyVehicle[VehiclePlate] or SharedVehicles[VehiclePlate] then
+						if MyVehicles[VehiclePlate] or SharedVehicles[VehiclePlate] then
 							table.insert(CloseCars, {
 								Car = v,
 								Distance = VehicleDistance
 							})
 						end
-						if Config.EnableJobvehicle == true then
-							if owner == ESX.PlayerData.job.name then
-								SharedVehicles[VehiclePlate] = true
+					else
+						SleepIfCallback = 300
+						ESX.TriggerServerCallback('lp_carlock:isVehicleOwner', function(owner)
+							if owner ~= true then
+								NotMyVehicle[VehiclePlate] = true
 							end
-						end
-					end, VehiclePlate)
+							if owner == true then
+								MyVehicles[VehiclePlate] = true
+								table.insert(CloseCars, {
+									Car = v,
+									Distance = VehicleDistance
+								})
+							end
+							if Config.EnableJobvehicle == true then
+								if owner == ESX.PlayerData.job.name then
+									SharedVehicles[VehiclePlate] = true
+								end
+							end
+						end, VehiclePlate)
+					end
 				end
-			end
 
-			Citizen.Wait(SleepIfCallback)
+				Citizen.Wait(SleepIfCallback)
 
-			local ClosestVehicle = 999
-			local ClosestVehicleEntity = nil
+				local ClosestVehicle = 999
+				local ClosestVehicleEntity = nil
 
-			for k, v in ipairs(CloseCars) do
-				if ClosestVehicle > v.Distance then
-					ClosestVehicle = v.Distance
-					ClosestVehicleEntity = v.Car
+				for k, v in ipairs(CloseCars) do
+					if ClosestVehicle > v.Distance then
+						ClosestVehicle = v.Distance
+						ClosestVehicleEntity = v.Car
+					end
 				end
-			end
 
-			if ClosestVehicleEntity == nil then
-				notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
-				--TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
-			else
-				ToggleCarLock(ClosestVehicleEntity)
+				if ClosestVehicleEntity == nil then
+					notificationHandler("car",_U('car_interaction'),_U('no_vehicle_in_range'),"red","error.mp3")
+					--TriggerEvent('notifications', -1, _U('car_interaction'), _U('no_vehicle_in_range'))
+				else
+					ToggleCarLock(ClosestVehicleEntity)
+				end
 			end
 		end
 	end

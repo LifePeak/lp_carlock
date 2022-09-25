@@ -64,16 +64,15 @@ ESX.RegisterServerCallback('lp_carlock:isVehicleOwner', function(source, cb, pla
 		['@owner'] = xTarget.identifier,
 		['@plate'] = plate
 	}, function(result)
-		if result[1] then
-			returncode = result[1].owner == xTarget.identifier
-		end
-		if returncode == false then
-			if Config.EnableJobvehicle == true then
-
-				returncode=MySQL.scalar.await('SELECT job FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {['@owner'] = xTarget.identifier,['@plate'] = plate})
+		if result ~= nil then
+			returncode = result == xTarget.identifier
+			
+			if returncode == false then
+				if Config.EnableJobvehicle == true then
+					returncode=MySQL.Async.fetchScalar('SELECT job FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {['@owner'] = xTarget.identifier,['@plate'] = plate})
+				end
 			end
 		end
-	
 		if returncode == nil then
 			returncode=false
 		end
