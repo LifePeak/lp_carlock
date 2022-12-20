@@ -1,9 +1,9 @@
 Locales['de'] = {
     ------------------------------------------------[ general ]------------------------------------------------
-    ['car_interaction']             = 'Fahrzeug Interaktion',
-    ['car_locked']                  = 'Fahrzeug abgeschlossen',
-    ['car_unlocked']                = 'Fahrzeug aufgeschlossen',
-    ['no_vehicle_in_range']         = '~r~Kein Fahrzeug in der Nähe!',
+    ['car_interaction']             = 'Fahrzeug',
+    ['car_locked']                  = 'abgeschlossen',
+    ['car_unlocked']                = 'aufgeschlossen',
+    ['no_vehicle_in_range']         = 'Kein Fahrzeug in der Nähe!',
     ['playerId']                    = 'Magische SpielerID',
     ['player_not_exist']            = 'Der Spieler existiert nicht.',
     ['not_allowed']                 = 'Du darfst das nicht.',

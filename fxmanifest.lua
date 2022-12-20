@@ -9,6 +9,8 @@ name 'lp_carlock'
 url 'https://github.com/zickzackhd'
 lua54 'yes'
 
+shared_script '@es_extended/imports.lua'
+
 shared_script {
 	'config.lua',
 }

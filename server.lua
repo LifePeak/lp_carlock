@@ -1,7 +1,9 @@
 ------------------------------------| Register ESX |-------------------------------------
-ESX = nil
+if Config.UseOldESX then
+    ESX = nil
+    TriggerEvent("esx:getSharedObject",function(obj) ESX = obj end)
+end
 
-TriggerEvent("esx:getSharedObject",function(obj) ESX = obj end)
 -- notification Handler
 function notificationHandler(xPlayer,icon,title,msg,color,sound)
 	if Config.Notification.System ~= 'lp_notify' then

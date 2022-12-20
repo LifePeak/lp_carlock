@@ -16,18 +16,26 @@ local MyVehicles     = {}
 local SharedVehicles = {}
 local NotMyVehicle   = {}
 local Animation 	 = "anim@mp_player_intmenu@key_fob@"
-local ESX = nil
+
 ------------------------------------| Initial ESX |------------------------------------------
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+
+    Citizen.CreateThread(function()
+		if Config.UseOldESX then
+			ESX = nil
+			while ESX == nil do
+				TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+				Citizen.Wait(0)
+			end
+		end
 	end
-	PlayerData = ESX.GetPlayerData()
-	while PlayerData == nil do
-        Citizen.Wait(10)
-    end
-end)
+        PlayerData = ESX.GetPlayerData()
+        while PlayerData == nil do
+            Citizen.Wait(10)
+        end
+    end)
+
+
+
 ------------------------------------| Usfull Functions |-------------------------------------
 -- notification Handler
 function notificationHandler(icon,title,msg,color,sound)
@@ -235,8 +243,10 @@ Citizen.CreateThread(function()
 								})
 							end
 							if Config.EnableJobvehicle == true then
-								if owner == ESX.PlayerData.job.name then
-									SharedVehicles[VehiclePlate] = true
+								if PlayerData then
+									if owner == PlayerData.job.name then
+										SharedVehicles[VehiclePlate] = true
+									end
 								end
 							end
 						end, VehiclePlate)
