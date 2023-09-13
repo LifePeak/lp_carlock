@@ -16,6 +16,7 @@ local MyVehicles     = {}
 local SharedVehicles = {}
 local NotMyVehicle   = {}
 local Animation 	 = "anim@mp_player_intmenu@key_fob@"
+local PlayerData = nil
 
 ------------------------------------| Initial ESX |------------------------------------------
 
@@ -27,7 +28,6 @@ local Animation 	 = "anim@mp_player_intmenu@key_fob@"
 				Citizen.Wait(0)
 			end
 		end
-	end
         PlayerData = ESX.GetPlayerData()
         while PlayerData == nil do
             Citizen.Wait(10)
